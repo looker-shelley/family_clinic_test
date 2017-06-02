@@ -19,6 +19,7 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 # }
 
 explore: visits  {
+  hidden: yes
   join: diagnosis_acute {
     from: diagnosis
     relationship: many_to_one
@@ -34,10 +35,13 @@ explore: visits  {
 }
 
 explore: claims {
+  hidden: yes
   join: insurer {
     relationship: many_to_one
     sql_on: ${claims.insurerid} = ${insurer.id} ;;
   }
 }
 
-explore: insurer {}
+explore: insurer {
+  hidden: yes
+}
